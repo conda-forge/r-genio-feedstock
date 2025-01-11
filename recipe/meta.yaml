@@ -12,7 +12,7 @@ source:
   sha256: f4ad6737a9f5cdfea8ac4f9ed8df33fac3c01b15d75e6c71ebceee8ab647fd47
 
 build:
-  number: 1
+  number: 2
   rpaths:
     - lib/R/lib/
     - lib/
@@ -35,6 +35,10 @@ requirements:
     - {{ posix }}coreutils         # [win]
     - {{ posix }}zip               # [win]
     - cross-r-base {{ r_base }}    # [build_platform != target_platform]
+    - r-rcpp                       # [build_platform != target_platform]
+    - r-dplyr                      # [build_platform != target_platform]
+    - r-readr >=2.0.0              # [build_platform != target_platform]
+    - r-tibble                     # [build_platform != target_platform]
   host:
     - r-base
     - r-rcpp
@@ -63,7 +67,6 @@ about:
     applications; handles Plink and Eigenstrat tables (FAM, BIM, IND, and SNP files).  There
     are also make functions for FAM and BIM tables with default values to go with simulated
     genotype data.
-  license_family: GPL3
   license_file:
     - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
 
